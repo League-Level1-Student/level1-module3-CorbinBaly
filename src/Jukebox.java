@@ -29,13 +29,13 @@ public class Jukebox implements Runnable, MouseListener {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Jukebox());
 	}
-
+	JLabel everybodyCirculation = loadImage("extra/bigOof.jpeg");
+	JLabel wiiShop = loadImage("BustaRhymes.jpeg");
 	public void run() {
 		JFrame frame = new JFrame();
-		JLabel wiiShop = loadImage("BustaRhymes.jpeg");
-		JPanel wiiPanel = new JPanel();
-		JLabel otherSong = loadImage("extra/bigOof.jpeg");
-		JPanel slamPanel = new JPanel();
+		
+		JPanel panel = new JPanel();
+		
 		// 3. Find an mp3 on your computer or on the Internet.
 		// 4. Create a Song
 
@@ -50,14 +50,13 @@ public class Jukebox implements Runnable, MouseListener {
 
 		frame.setVisible(true);
 		frame.setTitle("JukeBox");
-		frame.add(wiiPanel);
-		frame.add(slamPanel);
+		frame.add(panel);
 
-		wiiPanel.add(wiiShop);
+		panel.add(wiiShop);
 		wiiShop.addMouseListener(this);
-
+		everybodyCirculation.addMouseListener(this);
 		
-		slamPanel.add(otherSong);
+		panel.add(everybodyCirculation);
 		frame.pack();
 		
 		
@@ -74,8 +73,17 @@ public class Jukebox implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		Song songOne = new Song("Busta Rhymes Goes To The Wii Shop Channel.mp3");
-		songOne.play();
+	
+		JLabel clicked = (JLabel) e.getSource();
+		if(clicked==wiiShop) {
+			Song songOne = new Song("Busta Rhymes Goes To The Wii Shop Channel.mp3");
+			songOne.play();
+		}
+		if(clicked==everybodyCirculation) {
+			Song songTwo = new Song("Mashup Everybody's Circulation - TMABird (Lyrics).mp3");
+			songTwo.play();
+		}
+	
 	}
 
 	@Override

@@ -15,7 +15,12 @@ public class CowTimer {
 
 	public static void main(String[] args) throws InterruptedException {
 		/* 1. Make a CowTimer, set the time and start it. */
-
+		for (int i = 120; i <= 1; i--) {
+			
+		}
+		if(i)
+		System.out.println();
+		
 	}
 
 	private int minutes;
