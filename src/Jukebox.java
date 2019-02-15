@@ -25,15 +25,16 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
  * 2. Right click your project and add it as an External JAR (Under Java Build Path > Libraries).*/
 
 public class Jukebox implements Runnable, MouseListener {
-
+	Song songplayed = new Song("Busta Rhymes Goes To The Wii Shop Channel.mp3");
+	JLabel everybodyCirculation = loadImage("extra/bigOof.jpeg");
+	JLabel wiiShop = loadImage("BustaRhymes.jpeg");
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Jukebox());
 	}
-	JLabel everybodyCirculation = loadImage("extra/bigOof.jpeg");
-	JLabel wiiShop = loadImage("BustaRhymes.jpeg");
+	
 	public void run() {
 		JFrame frame = new JFrame();
-		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panel = new JPanel();
 		
 		// 3. Find an mp3 on your computer or on the Internet.
@@ -73,17 +74,19 @@ public class Jukebox implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-	
+	songplayed.stop();
 		JLabel clicked = (JLabel) e.getSource();
 		if(clicked==wiiShop) {
-			Song songOne = new Song("Busta Rhymes Goes To The Wii Shop Channel.mp3");
-			songOne.play();
+			
+			songplayed = new Song("Busta Rhymes Goes To The Wii Shop Channel.mp3");
+		
 		}
-		if(clicked==everybodyCirculation) {
-			Song songTwo = new Song("Mashup Everybody's Circulation - TMABird (Lyrics).mp3");
-			songTwo.play();
+		
+		else if(clicked==everybodyCirculation) {
+		songplayed = new Song("Mashup Everybody's Circulation - TMABird (Lyrics).mp3");
+		
 		}
-	
+		songplayed.play();
 	}
 
 	@Override

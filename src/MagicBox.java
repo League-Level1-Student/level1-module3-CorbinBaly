@@ -11,12 +11,15 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JApplet;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,7 +27,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class MagicBox extends JPanel implements Runnable, MouseListener {
-
+JLabel label= new JLabel();
 	/*
 	 * We are going to hide secrets within the magic box. When the user clicks on a
 	 * secret place, stuff will happen.
@@ -44,6 +47,7 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 		SwingUtilities.invokeLater(new MagicBox());
 
 	}
+JFrame frameTwo= new JFrame();
 
 	@Override
 	public void run() {
@@ -76,7 +80,11 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 			throw new Exception("Could not load image: " + imageFile);
 		}
 	}
-
+	public JLabel loadImageFromWithinProject(String fileName) {
+		URL imageURL = getClass().getResource(fileName);
+		Icon icon = new ImageIcon(imageURL);
+		return new JLabel(icon);
+	}
 	@Override
 	public void paintComponent(Graphics g) {
 		g.drawImage(backgroundImage, 0, 0, null);
@@ -85,7 +93,8 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("clicked");
+	System.out.println("clicked");
+	label= loadImageFromWithinProject("ShaggyGod.jpeg");
 	
 	}
 
