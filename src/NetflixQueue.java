@@ -9,8 +9,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class NetflixQueue {
-	
+	Movie avengers = new Movie("ThanosSnap",9);
+	Movie badsequel = new Movie("RandomStarWars", 4);
+	Movie pixarmovie = new Movie("Wall-E",10);
+	Movie disneyremake = new Movie("Aladdin", 6);
+	Movie randomgoodmovie = new Movie("Idk,the movie",8);
 	ArrayList<Movie> movies = new ArrayList<Movie>();
+	public Movie getAvengers() {
+		return avengers;
+	}
+	public void setAvengers(Movie avengers) {
+		this.avengers = avengers;
+	}
 	
 	public Movie getBestMovie(){
 		this.sortMoviesByRating();
@@ -36,6 +46,7 @@ public class NetflixQueue {
 		System.out.println("Your Netflix queue contains: ");
 		for (Movie movie : movies) {
 			System.out.println(movie);
+		
 		}
 	}
 

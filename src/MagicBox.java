@@ -23,6 +23,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JApplet;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -69,14 +70,14 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.addMouseListener(this);
-		label = loadImageFromWithinProject("InsertRandomImage.png");
+		label = loadImageFromWithinProject("ShaggyInstinct copy.jpeg");
 		label.setVisible(false);
 		frame.add(label);
 		JFrame frame2 = new JFrame();
 		frame2.setVisible(false);
 		frame2.add(label);
-		clip = loadSound("Clock tick tock SOUND EFFECTS.wav");
-
+		clip = loadSound("Naruto Akatsuki Theme song FULL (online-audio-converter.com) (1).wav");
+		JOptionPane.showMessageDialog(null, "Find him, find the one they call shaggy. Defeat him.");
 	}
 
 	public AudioClip loadSound(String fileName) {
@@ -134,14 +135,19 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("clicked");
-		clip.play();
-		try {
-			loadBackgroundImage("src/InsertRandomImage.png");
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		repaint();
+		int color = backgroundImage.getRGB(e.getX(), e.getY());
+		System.out.println(color);
+		
+			JOptionPane.showMessageDialog(null, "Like, zoinks dude. You found me! Now it's time for you to die dude!");
+			clip.play();
+			try {
+				loadBackgroundImage("src/ShaggyInstinct copy.jpeg");
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			repaint();
+		
 	}
 
 	@Override
