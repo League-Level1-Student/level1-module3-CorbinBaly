@@ -9,26 +9,27 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class NetflixQueue {
-	Movie avengers = new Movie("ThanosSnap",9);
-	Movie badsequel = new Movie("RandomStarWars", 4);
-	Movie pixarmovie = new Movie("Wall-E",10);
-	Movie disneyremake = new Movie("Aladdin", 6);
-	Movie randomgoodmovie = new Movie("Idk,the movie",8);
-	ArrayList<Movie> movies = new ArrayList<Movie>();
-	public Movie getAvengers() {
-		return avengers;
+	public ArrayList<Movie> movies = new ArrayList<Movie>();
+	public ArrayList<Movie> getMovies() {
+		return movies;
 	}
-	public void setAvengers(Movie avengers) {
-		this.avengers = avengers;
+	public void setMovies(ArrayList<Movie> movies) {
+		this.movies = movies;
 	}
-	
 	public Movie getBestMovie(){
 		this.sortMoviesByRating();
 		return movies.get(0);
 	}
+	public Movie getSecondBestMovie() {
+		this.sortMoviesByRating();
+		return movies.get(1);
+	}
 
 	public void addMovie(Movie movie) {
 		movies.add(movie);
+	}
+	public String toString() {
+		return "NetflixQueue with "+ movies.size()+" movies";
 	}
 	
 	public Movie getMovie(int movieNumber){
